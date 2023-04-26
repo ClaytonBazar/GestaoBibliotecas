@@ -41,7 +41,7 @@ public class BaseDeDadosLivro {
             pstm.execute();
             pstm.close();
         } catch (SQLException erro) {
-            System.out.println("Erro aconteceu na classe PacienteBaseDados metodo cadastrardados " + erro.getMessage());
+            System.out.println("Erro aconteceu na classe LivroBaseDados metodo cadastrardados " + erro.getMessage());
         }
 
     }
@@ -68,7 +68,7 @@ public class BaseDeDadosLivro {
 
             }
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "BaseDados no metodo listar " + erro.getMessage());
+            JOptionPane.showMessageDialog(null, "LivroBaseDados no metodo listar " + erro.getMessage());
         }
         return lista;
 
@@ -95,7 +95,7 @@ public class BaseDeDadosLivro {
             pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar" + erro);
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar(deletar)" + erro);
 
         }
 
@@ -123,7 +123,7 @@ public class BaseDeDadosLivro {
 
             }
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "PacienteBaseDados no metodo pesquisarDados " + erro.getMessage());
+            JOptionPane.showMessageDialog(null, "LivroBaseDados no metodo pesquisarDados " + erro.getMessage());
         }
         return lista;
 
