@@ -45,10 +45,10 @@ public class BaseDeDadosLivro {
         }
 
     }
-//listar livros organizados pelo titulo
+//listar livros organizados pelo genero
     public ArrayList<Livros> ListarLivros() {
         conn = new ClasseConexao().createDB();
-        String sql = "select * from dados sort by genero";
+        String sql = "select * from livro sort by genero";
 
         try {
             pstm = conn.prepareStatement(sql);
@@ -78,7 +78,7 @@ public class BaseDeDadosLivro {
     public void deleteLivros(Livros bi) {
         conn = new ClasseConexao().createDB();
         try {
-            String sql = "DELETE * FROM dados WHERE titulo = ?";
+            String sql = "DELETE * FROM livro WHERE titulo = ?";
             Livros p = new Livros();
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, "titulo");
@@ -103,7 +103,7 @@ public class BaseDeDadosLivro {
 //Listar Livros Disponiveis
     public ArrayList<Livros> ListarLivrosDis() {
         conn = new ClasseConexao().createDB();
-        String sql = "select * from dados Where disponibilidade = sim";
+        String sql = "select * from livro Where disponibilidade = sim";
 
         try {
             pstm = conn.prepareStatement(sql);
@@ -135,7 +135,7 @@ public class BaseDeDadosLivro {
     public Livros PesquisarLivrosT(String titulo) {
         conn = new ClasseConexao().createDB();
         try {
-            String sql = "SELECT * FROM dados WHERE titulo = ?";
+            String sql = "SELECT * FROM livro WHERE titulo = ?";
             Livros l = new Livros();
             
             pstm = conn.prepareStatement(sql);
@@ -159,11 +159,11 @@ public class BaseDeDadosLivro {
 
     }
     
-    // pesquisar livros com titulo
+    // pesquisar livros com autor
     public Livros PesquisarLivrosA(String autor) {
         conn = new ClasseConexao().createDB();
         try {
-            String sql = "SELECT * FROM dados WHERE autor = ?";
+            String sql = "SELECT * FROM livro WHERE autor = ?";
             Livros l = new Livros();
             
             pstm = conn.prepareStatement(sql);
@@ -187,11 +187,11 @@ public class BaseDeDadosLivro {
 
     }
     
-    // pesquisar livros com titulo
+    // pesquisar livros com genero
     public Livros PesquisarLivrosG(String genero) {
         conn = new ClasseConexao().createDB();
         try {
-            String sql = "SELECT * FROM dados WHERE genero = ?";
+            String sql = "SELECT * FROM livro WHERE genero = ?";
             Livros l = new Livros();
             
             pstm = conn.prepareStatement(sql);
@@ -215,11 +215,11 @@ public class BaseDeDadosLivro {
 
     }
     
-    // pesquisar livros com titulo
+    // pesquisar livros com ano
     public Livros PesquisarLivrosA(int ano) {
         conn = new ClasseConexao().createDB();
         try {
-            String sql = "SELECT * FROM dados WHERE ano = ?";
+            String sql = "SELECT * FROM livro WHERE ano = ?";
             Livros l = new Livros();
             
             pstm = conn.prepareStatement(sql);
