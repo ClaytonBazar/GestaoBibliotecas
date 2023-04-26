@@ -23,7 +23,7 @@ public class BaseDadosCliente {
     ResultSet rs;
     
     ArrayList<Cliente> list = new ArrayList<>();
-    
+// cadastrar clientes na base de dados    
     public void cadastrarCliente(Cliente c) {
         conn = new ClasseConexao().createDB();
         String sql = "INSERT INTO cliente(nome,idade,endereco,email,telefone) VALUES(?,?,?,?,?)";
@@ -43,10 +43,10 @@ public class BaseDadosCliente {
         }
 
     }
-
+//listar os clientes
     public ArrayList<Cliente> ListarClientes() {
         conn = new ClasseConexao().createDB();
-        String sql = "select * from dados sort by nome";
+        String sql = "select * from cliente sort by nome";
 
         try {
             pstm = conn.prepareStatement(sql);
@@ -70,11 +70,11 @@ public class BaseDadosCliente {
         return list;
 
     }
-
+// pesquisar atraves do nome
     public Cliente PesquisarCliente(String nome) {
         conn = new ClasseConexao().createDB();
         try {
-            String sql = "SELECT * FROM dados WHERE nome = ?";
+            String sql = "SELECT * FROM cliente WHERE nome = ?";
             Cliente c2 = new Cliente();
             
             pstm = conn.prepareStatement(sql);
@@ -96,11 +96,11 @@ public class BaseDadosCliente {
         }
 
     }
-
+//deletar cliente da base de dados
     public void deleteLivros(Cliente nome) {
         conn = new ClasseConexao().createDB();
         try {
-            String sql = "DELETE * FROM dados WHERE nome = ?";
+            String sql = "DELETE * FROM cliente WHERE nome = ?";
             Cliente c = new Cliente();
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, "titulo");
