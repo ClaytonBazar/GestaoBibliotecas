@@ -26,7 +26,7 @@ public class BaseDadosCliente {
 // cadastrar clientes na base de dados    
     public void cadastrarCliente(Cliente c) {
         conn = new ClasseConexao().createDB();
-        String sql = "INSERT INTO cliente(nome,idade,endereco,email,telefone) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO dbclientes (nome,idade,endereco,email,telefone) VALUES(?,?,?,?,?)";
         try {
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, c.getNome());
@@ -46,7 +46,7 @@ public class BaseDadosCliente {
 //listar os clientes
     public ArrayList<Cliente> ListarClientes() {
         conn = new ClasseConexao().createDB();
-        String sql = "select * from cliente sort by nome";
+        String sql = "select * from dbclientes sort by nome";
 
         try {
             pstm = conn.prepareStatement(sql);
@@ -65,7 +65,7 @@ public class BaseDadosCliente {
 
             }
         } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "BaseDados no metodo listar " + erro.getMessage());
+            JOptionPane.showMessageDialog(null, "BaseDadosCliente no metodo listar " + erro.getMessage());
         }
         return list;
 
@@ -74,7 +74,7 @@ public class BaseDadosCliente {
     public Cliente PesquisarCliente(String nome) {
         conn = new ClasseConexao().createDB();
         try {
-            String sql = "SELECT * FROM cliente WHERE nome = ?";
+            String sql = "SELECT * FROM dbclientes WHERE nome = ?";
             Cliente c2 = new Cliente();
             
             pstm = conn.prepareStatement(sql);
@@ -100,7 +100,7 @@ public class BaseDadosCliente {
     public void deleteLivros(Cliente nome) {
         conn = new ClasseConexao().createDB();
         try {
-            String sql = "DELETE * FROM cliente WHERE nome = ?";
+            String sql = "DELETE * FROM dbclientes WHERE nome = ?";
             Cliente c = new Cliente();
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, "titulo");
