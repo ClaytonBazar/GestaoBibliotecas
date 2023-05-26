@@ -4,6 +4,7 @@
  */
 package gestaodebibliotecas;
 
+
 import Livro.Livros;
 import java.sql.Connection;
 import java.sql.Date;
@@ -14,30 +15,30 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import utilizador.Cliente;
 
-/**
- *
- * @author Dell
- */
+
 public class BaseDeDadosLivro {
-     Connection conn;
+
+    Connection conexao;
     PreparedStatement pstm;
     ResultSet rs;
     ArrayList<Livros> lista = new ArrayList<>();
     ArrayList<Cliente> list = new ArrayList<>();
 //cadastrar livros   
+
     public void cadastrarLivros(Livros l) {
-        conn = new ClasseConexao().createDB();
-        String sql = "INSERT INTO dblivro(tituto,autor,genero,PrecoEmprestimo,QuantEstoque,anoLancamento,dataEntrega) VALUES(?,?,?,?,?,?,?)";
+        conexao = new ClasseConexao().conector();
+        String sql = "INSERT INTO tblivro(titulo,genero,anoPublicacao,autor,precoEmprestimo,quantEstoque) VALUES(?,?,?,?,?,?)";
         try {
-            pstm = conn.prepareStatement(sql);
+            pstm = conexao.prepareStatement(sql);
             pstm.setString(1, l.getTitulo());
-            pstm.setString(2, l.getAutor());
-            pstm.setString(3, l.getGenero());
-            pstm.setDouble(4, l.getPrecoEmprestimo());
+            pstm.setString(2, l.getGenero());
+            pstm.setInt(3, l.getAnoPublicacao());
+            pstm.setString(4, l.getAutor());
+            pstm.setDouble(6, l.getPrecoEmprestimo());
             pstm.setInt(5, l.getQuantEstoque());
-            pstm.setInt(6, l.getAnoPublicacao());
-            pstm.setDate(7, (Date) l.getDataEntrega());
-           
+            
+            //pstm.setDate(7, (Date) l.getDataEntrega());
+
             pstm.execute();
             pstm.close();
         } catch (SQLException erro) {
@@ -46,12 +47,13 @@ public class BaseDeDadosLivro {
 
     }
 //listar livros organizados pelo genero
+
     public ArrayList<Livros> ListarLivros() {
-        conn = new ClasseConexao().createDB();
-        String sql = "select * from dblivro sort by genero";
+        conexao = new ClasseConexao().conector();
+        String sql = "select * from tblivro";
 
         try {
-            pstm = conn.prepareStatement(sql);
+            pstm = conexao.prepareStatement(sql);
             rs = pstm.executeQuery();
 
             while (rs.next()) {
@@ -62,7 +64,7 @@ public class BaseDeDadosLivro {
                 l4.setPrecoEmprestimo(rs.getDouble("precoEmprestimo"));
                 l4.setQuantEstoque(rs.getInt("quantEstoque"));
                 l4.setAnoPublicacao(rs.getInt("anoPublicacao"));
-                l4.setDataEntrega(rs.getDate("dataEntrega"));
+               
 
                 lista.add(l4);
 
@@ -76,11 +78,11 @@ public class BaseDeDadosLivro {
 
 // deletar livros
     public void deleteLivros(Livros bi) {
-        conn = new ClasseConexao().createDB();
+        conexao = new ClasseConexao().conector();
         try {
             String sql = "DELETE * FROM dblivro WHERE titulo = ?";
             Livros p = new Livros();
-            pstm = conn.prepareStatement(sql);
+            pstm = conexao.prepareStatement(sql);
             pstm.setString(1, "titulo");
             rs = pstm.executeQuery();
 
@@ -90,7 +92,7 @@ public class BaseDeDadosLivro {
             pstm.setDouble(4, p.getPrecoEmprestimo());
             pstm.setInt(5, p.getQuantEstoque());
             pstm.setInt(6, p.getAnoPublicacao());
-            pstm.setDate(7,(Date) p.getDataEntrega());
+            pstm.setDate(7, (Date) p.getDataEntrega());
 
             pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
@@ -101,12 +103,13 @@ public class BaseDeDadosLivro {
 
     }
 //Listar Livros Disponiveis
+
     public ArrayList<Livros> ListarLivrosDis() {
-        conn = new ClasseConexao().createDB();
+        conexao = new ClasseConexao().conector();
         String sql = "select * from dblivro Where disponibilidade = sim";
 
         try {
-            pstm = conn.prepareStatement(sql);
+            pstm = conexao.prepareStatement(sql);
             rs = pstm.executeQuery();
 
             while (rs.next()) {
@@ -128,17 +131,16 @@ public class BaseDeDadosLivro {
         return lista;
 
     }
-    
+
 // Filtros de pesquisa de dados
-    
     // pesquisar livros com titulo
     public Livros PesquisarLivrosT(String titulo) {
-        conn = new ClasseConexao().createDB();
+        conexao = new ClasseConexao().conector();
         try {
             String sql = "SELECT * FROM dblivro WHERE titulo = ?";
             Livros l = new Livros();
-            
-            pstm = conn.prepareStatement(sql);
+
+            pstm = conexao.prepareStatement(sql);
             pstm.setString(1, titulo);
             rs = pstm.executeQuery();
 
@@ -150,7 +152,7 @@ public class BaseDeDadosLivro {
             l.setAnoPublicacao(rs.getInt("anoPublicacao"));
             l.setQuantEstoque(rs.getInt("quantEstoque"));
             l.setDataEntrega(rs.getDate("dataEntrega"));
-            
+
             return l;
 
         } catch (Exception erro) {
@@ -158,15 +160,15 @@ public class BaseDeDadosLivro {
         }
 
     }
-    
+
     // pesquisar livros com autor
     public Livros PesquisarLivrosA(String autor) {
-        conn = new ClasseConexao().createDB();
+        conexao = new ClasseConexao().conector();
         try {
             String sql = "SELECT * FROM dblivro WHERE autor = ?";
             Livros l = new Livros();
-            
-            pstm = conn.prepareStatement(sql);
+
+            pstm = conexao.prepareStatement(sql);
             pstm.setString(1, autor);
             rs = pstm.executeQuery();
 
@@ -178,7 +180,7 @@ public class BaseDeDadosLivro {
             l.setAnoPublicacao(rs.getInt("anoPublicacao"));
             l.setQuantEstoque(rs.getInt("quantEstoque"));
             l.setDataEntrega(rs.getDate("dataEntrega"));
-            
+
             return l;
 
         } catch (Exception erro) {
@@ -186,15 +188,15 @@ public class BaseDeDadosLivro {
         }
 
     }
-    
+
     // pesquisar livros com genero
     public Livros PesquisarLivrosG(String genero) {
-        conn = new ClasseConexao().createDB();
+        conexao = new ClasseConexao().conector();
         try {
             String sql = "SELECT * FROM dblivro WHERE genero = ?";
             Livros l = new Livros();
-            
-            pstm = conn.prepareStatement(sql);
+
+            pstm = conexao.prepareStatement(sql);
             pstm.setString(1, genero);
             rs = pstm.executeQuery();
 
@@ -206,7 +208,7 @@ public class BaseDeDadosLivro {
             l.setAnoPublicacao(rs.getInt("anoPublicacao"));
             l.setQuantEstoque(rs.getInt("quantEstoque"));
             l.setDataEntrega(rs.getDate("dataEntrega"));
-            
+
             return l;
 
         } catch (Exception erro) {
@@ -214,15 +216,15 @@ public class BaseDeDadosLivro {
         }
 
     }
-    
+
     // pesquisar livros com ano
     public Livros PesquisarLivrosA(int ano) {
-        conn = new ClasseConexao().createDB();
+        conexao = new ClasseConexao().conector();
         try {
             String sql = "SELECT * FROM dblivro WHERE ano = ?";
             Livros l = new Livros();
-            
-            pstm = conn.prepareStatement(sql);
+
+            pstm = conexao.prepareStatement(sql);
             pstm.setInt(1, ano);
             rs = pstm.executeQuery();
 
@@ -234,7 +236,7 @@ public class BaseDeDadosLivro {
             l.setAnoPublicacao(rs.getInt("anoPublicacao"));
             l.setQuantEstoque(rs.getInt("quantEstoque"));
             l.setDataEntrega(rs.getDate("dataEntrega"));
-            
+
             return l;
 
         } catch (Exception erro) {

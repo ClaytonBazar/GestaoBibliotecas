@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package biblioteca.utilizadores;
 
 public class Cliente {
@@ -6,18 +9,18 @@ public class Cliente {
     private String nome;
     private int idade;
     private String endereco;
-    private int contacto;
+    private int Telefone;
     private String email;
     
     public Cliente(){
         
     }
 
-    public Cliente(String nome, int idade, String endereco, int contacto, String email) {
+    public Cliente(String nome, int idade, String endereco, int Telefone, String email) {
         this.nome = nome;
         this.idade = idade;
         this.endereco = endereco;
-        this.contacto = contacto;
+        this.Telefone = Telefone;
         this.email = email;
     }
 
@@ -45,12 +48,12 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public int getContacto() {
-        return contacto;
+    public int getTelefone() {
+        return Telefone;
     }
 
-    public void setContacto(int contacto) {
-        this.contacto = contacto;
+    public void setTelefone(int Telefone) {
+        this.Telefone = Telefone;
     }
 
     public String getEmail() {
@@ -64,3 +67,4 @@ public class Cliente {
     
     
 }
+

@@ -1,15 +1,18 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package biblioteca.utilizadores;
 
 public class Instituicao {
-    
+
     private String nome;
     private String endereco;
     private int contacto;
     private String email;
-    
-    public Instituicao(){
-        
+
+    public Instituicao() {
+
     }
 
     public Instituicao(String nome, String endereco, int contacto, String email) {
@@ -50,7 +53,5 @@ public class Instituicao {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    
+
 }

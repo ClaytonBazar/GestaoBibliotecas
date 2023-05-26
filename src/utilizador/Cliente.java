@@ -1,6 +1,8 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package utilizador;
-
 public class Cliente {
     
     private String nome;
@@ -13,11 +15,11 @@ public class Cliente {
         
     }
 
-    public Cliente(String nome, int idade, String endereco, int contacto, String email) {
+    public Cliente(String nome, String endereco, int telefone, String email, int idade) {
         this.nome = nome;
         this.idade = idade;
         this.endereco = endereco;
-        this.telefone = contacto;
+        this.telefone = telefone;
         this.email = email;
     }
 

@@ -4,17 +4,16 @@
  */
 package utilizador;
 
-
 public class Administrador {
-    
+
     private String nomeAdmin;
     private String senhaAdmin;
 
     public Administrador() {
-     
+
     }
-    
-     public Administrador(String nomeAdmin, String senhaAdmin) {
+
+    public Administrador(String nomeAdmin, String senhaAdmin) {
         this.nomeAdmin = nomeAdmin;
         this.senhaAdmin = senhaAdmin;
     }
@@ -34,9 +33,5 @@ public class Administrador {
     public void setSenhaAdmin(String senhaAdmin) {
         this.senhaAdmin = senhaAdmin;
     }
-     
-     
-    
-    
-    
+
 }

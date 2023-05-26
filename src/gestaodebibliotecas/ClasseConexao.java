@@ -7,24 +7,30 @@ package gestaodebibliotecas;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.*;
 
-/**
- *
- * @author Dell
- */
+
 public class ClasseConexao {
-       public  Connection createDB(){
-       Connection conn = null;
-       try{
-           System.out.println("Criando conexao...");
-           String url = "jdbc:mysql://localhost:3306/projecto?user=root&password=<3/clay70N";
-           conn=DriverManager.getConnection(url);
-           System.out.println("Conexao criada");
-           
-       }catch(SQLException erro){
-           System.out.println("Problema na ClasseConexao"+erro.getMessage());
-       }
-       return conn;
-   } 
-   
+
+    // mettodo reaponsavel para estabelecer a conexao com o banco de dados 
+    public static Connection conector() {
+        Connection conexao = null;
+        // A linha abaixo chama o driver
+        String driver = "com.mysql.jdbc.Driver";
+        // Armazenando informacoes referentes ao banco de dados
+        String url = "jdbc:mysql://localhost:3306/databasePetitis";
+        String user = "root";
+        String password = "Pettis3";
+        // Estabelecendo a conexao com o banco de dados
+        try {
+            Class.forName(driver);
+            conexao = DriverManager.getConnection(url, user, password);
+            return conexao;
+        } catch (Exception e) {
+            
+            return null;
+        }
+    }
+
 }
+
