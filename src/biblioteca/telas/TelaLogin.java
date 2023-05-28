@@ -4,8 +4,9 @@
  */
 package biblioteca.telas;
 
+import biblioteca.telasDesign.DesignLogin;
 import biblioteca.telas.*;
-import gestaodebibliotecas.ClasseConexao;
+import BaseDeDados.ClasseConexao;
 import java.awt.image.BufferedImage;
 import java.sql.Connection;
 

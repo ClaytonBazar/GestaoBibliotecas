@@ -4,6 +4,8 @@
  */
 package biblioteca.telas;
 
+import biblioteca.telasDesign.DesignListaLivros;
+
 /**
  *
  * @author Dioneria Matavele

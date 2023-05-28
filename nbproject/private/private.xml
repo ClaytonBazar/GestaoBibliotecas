@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/GestaoBibliotecass/src/biblioteca/telasDesign/DesignClienteCadastro.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/GestaoBibliotecass/src/biblioteca/telasDesign/AdminLivros.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/GestaoBibliotecass/src/biblioteca/telasDesign/DesignTelaPesquisa.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/GestaoBibliotecass/src/biblioteca/telasDesign/DesignListaLivros.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/GestaoBibliotecass/src/biblioteca/telasDesign/DesignLogin.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/GestaoBibliotecass/src/biblioteca/telasDesign/DesignLivrosEmprestados.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/GestaoBibliotecass/src/biblioteca/telas/ClienteCadastro.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/GestaoBibliotecass/src/BaseDeDados/BaseDeDadosLivro.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/GestaoBibliotecass/src/biblioteca/telasDesign/DesignMenu.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/GestaoBibliotecass/src/biblioteca/telasDesign/DesignListaClientes.java</file>
+        </group>
     </open-files>
 </project-private>

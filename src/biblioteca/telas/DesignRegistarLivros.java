@@ -5,7 +5,9 @@
 package biblioteca.telas;
 
 import Livro.Livros;
-import gestaodebibliotecas.BaseDeDadosLivro;
+import biblioteca.telas.MenuAdmin;
+import biblioteca.telasDesign.DesignClienteCadastro;
+import BaseDeDados.BaseDeDadosLivro;
 import java.awt.Graphics;
 import java.io.File;
 import java.awt.image.BufferedImage;
@@ -14,67 +16,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import java.sql.*;
-import gestaodebibliotecas.ClasseConexao;
+import BaseDeDados.ClasseConexao;
+import biblioteca.telasDesign.DesignMenuAdmin;
 import javax.swing.JOptionPane;
 
 public class DesignRegistarLivros extends javax.swing.JPanel {
 
-    Connection conexao = null;
-    PreparedStatement pstm = null;
-    ResultSet rs = null;
-    BufferedImage imagemFundo;
 
     /**
      * Creates new form RegistarLivros
      */
-    public DesignRegistarLivros() {
+    BufferedImage imagemFundo;
+    DesignRegistarLivros(){
+        
+
         initComponents();
-        conexao = ClasseConexao.conector();
 
         try {
-            this.imagemFundo = ImageIO.read(new File("C:\\Users\\Dioneria Matavele\\Pictures\\telaas\\Registar.png"));
+            this.imagemFundo = ImageIO.read(new File("C:\\Users\\Dioneria Matavele\\Pictures\\telaas\\Login.png"));
 
         } catch (IOException ex) {
-            Logger.getLogger(DesignLogin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DesignClienteCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    private void adicionar() {
-        String sql = "insert into tbLivro(titulo, genero, anoPublicacao, autor, precoEmprestimo, quantEstoque) values(?,?,?,?,?,?)";
-        try {
-            pstm = conexao.prepareStatement(sql);
-            pstm.setString(1, txtTitulo.getText());
-            pstm.setString(2, txtGenero.getSelectedItem().toString());
-            pstm.setString(3, txtAnoPublicacao.getText());
-            pstm.setString(4, txtAutor.getText());
-            pstm.setString(5, txtPreco.getText());
-            pstm.setString(6, txtQuantidade.getText());
-             JOptionPane.showConfirmDialog(null, "Registado com Sucesso");
-
-            pstm.executeUpdate();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro no registo");
-        }
-    }
-    public void remover(){
-         String sql = "delete from tbLivro(titulo, genero, anoPublicacao, autor, precoEmprestimo, quantEstoque) values(?,?,?,?,?,?)";
-        try {
-            pstm = conexao.prepareStatement(sql);
-            pstm.setString(1, txtTitulo.getText());
-            pstm.setString(2, txtGenero.getSelectedItem().toString());
-            pstm.setString(3, txtAnoPublicacao.getText());
-            pstm.setString(4, txtAutor.getText());
-            pstm.setString(5, txtPreco.getText());
-            pstm.setString(6, txtQuantidade.getText());
-            
-
-            pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Removido com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Ouve um erro na remocao.","Erro",JOptionPane.INFORMATION_MESSAGE);
-        }
-      
-        
     }
 
     protected void paintComponent(Graphics g) {
@@ -109,7 +72,6 @@ public class DesignRegistarLivros extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(255, 145, 77));
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,11 +200,19 @@ public class DesignRegistarLivros extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        adicionar();
+         String titulo =  txtTitulo.getText();
+          String genero =   txtGenero.getSelectedItem().toString();
+            String anoPub = txtAnoPublicacao.getText();
+            String autor = txtAutor.getText();
+            String preco = txtPreco.getText();
+            String quant = txtQuantidade.getText();
+            Livros liv = new Livros();
+            BaseDeDadosLivro bdl = new BaseDeDadosLivro();
+            bdl.cadastrarLivros(liv);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new MenuAdmin().setVisible(true);
+        new DesignMenuAdmin().setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

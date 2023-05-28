@@ -14,14 +14,14 @@ public class Livros {
     private int anoPublicacao;
     private String autor;
     private double precoEmprestimo;
-    private int quantEstoque;
-    private Date dataEntrega;
+    private String quantEstoque;
+ 
 
     public Livros() {
 
     }
 
-    public Livros(String titulo, String genero, int anoPublicacao, String autor, double precoEmprestimo, int quantEstoque) {
+    public Livros(String titulo, String genero, int anoPublicacao, String autor, double precoEmprestimo, String quantEstoque) {
         this.titulo = titulo;
         this.genero = genero;
         this.anoPublicacao = anoPublicacao;
@@ -70,11 +70,11 @@ public class Livros {
         this.precoEmprestimo = precoEmprestimo;
     }
 
-    public int getQuantEstoque() {
+    public String getQuantEstoque() {
         return quantEstoque;
     }
 
-    public void setQuantEstoque(int quantEstoque) {
+    public void setQuantEstoque(String quantEstoque) {
         this.quantEstoque = quantEstoque;
     }
 
@@ -86,12 +86,6 @@ public class Livros {
         this.id = id;
     }
 
-    public Date getDataEntrega() {
-        return dataEntrega;
-    }
 
-    public void setDataEntrega(Date dataEntrega) {
-        this.dataEntrega = dataEntrega;
-    }
 
 }
